@@ -387,6 +387,7 @@ class GsmModem(SerialComms):
                 self.write('AT+CNMI=' + self.AT_CNMI)  # Set message notifications
             except CommandError:
                 try:
+                    self.write('AT+QURCCFG=\"urcport\",\"uart1\"')
                     self.write('AT+CNMI=2,1,0,1,0') # Set message notifications, using TE for delivery reports <ds>
                 except CommandError:
                     # Message notifications not supported
